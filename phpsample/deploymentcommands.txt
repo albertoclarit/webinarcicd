@@ -1,0 +1,16 @@
+kubectl get namespace
+
+kubectl apply -f namespace.yaml
+
+kubectl apply -f deployment.yaml
+
+kubectl delete -f deployment.yaml
+
+
+kubectl -n phpdemo describe pod phpdemo-deployment-dbc457fc6-8k8nk
+
+kubectl -n phpdemo get all
+
+
+kubectl -n phpdemo describe service phpdemo-service
+

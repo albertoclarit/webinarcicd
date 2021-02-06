@@ -1,4 +1,15 @@
-docker run --name app -d -p 8080:80 romeoz/docker-apache-php
+docker pull romeoz/docker-apache-php:latest
+docker run --name app -d -p 8080:80  romeoz/docker-apache-php
+
+
+ ### loadbalance
+
+ docker run --name app1 -d -p 8081:80  romeoz/docker-apache-php
+ docker run --name app2 -d -p 8082:80  romeoz/docker-apache-php
+ docker run --name app3 -d -p 8084:80  romeoz/docker-apache-php
+
+
+
 docker exec -it app bash
 
 docker stop app
@@ -8,6 +19,15 @@ docker run --name app -d -p 8080:80 \
   -v $(pwd):/var/www/app/ \
   romeoz/docker-apache-php
 
+
+docker run --name app -d -p 8080:80 \
+  -v /hostfolder:/var/www/app/ \
+  -v /mysql:/mysqldata \
+  romeoz/docker-apache-php
+
+docker run --name app -d -p 8080:80  C:\phpdemo :/var/www/app/ romeoz/docker-apache-php
+
+
 docker start app
 
 
@@ -16,3 +36,20 @@ docker start app
 docker build -t albertoclarit/phpdemo:1.0.0  .
 
 docker run --name app -d -p 8080:80  albertoclarit/phpdemo:1.0.0
+
+docker images
+
+docker rmi de4cfd21821c
+
+
+container registry
+
+
+docker run --name inkman -d -p 8080:80  albertoclarit/phpdemo:1.0.0
+
+// === example nginx
+
+docker run --name inkman -d -p 80:80  albertoclarit/nginx:1.0.0
+
+
+docker push albertoclarit/phpdemo
