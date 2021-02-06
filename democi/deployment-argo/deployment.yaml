@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cicddemo-deployment
+  namespace: cicddemo
+  labels:
+    app: cicddemo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cicddemo
+  template:
+    metadata:
+      labels:
+        app: cicddemo
+    spec:
+      containers:
+        - name: cicddemo
+          image: albertoclarit/democi:1.0.3
+          ports:
+            - containerPort: 8080
+          args:
+            - --spring.profiles.active=prod
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              httpHeaders:
+                - name: X-Custom-Header
+                  value: Awesome
+            initialDelaySeconds: 15
+            periodSeconds: 15
+            successThreshold: 1
+            timeoutSeconds: 20
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              httpHeaders:
+                - name: X-Custom-Header
+                  value: Awesome
+            initialDelaySeconds: 15
+            periodSeconds: 15
+            successThreshold: 1
+            timeoutSeconds: 20
+

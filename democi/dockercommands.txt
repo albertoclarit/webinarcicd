@@ -1,0 +1,5 @@
+docker build -t albertoclarit/democi:1.0.4  .
+docker push albertoclarit/democi
+
+docker run  -p 8080:8080  albertoclarit/democi:1.0.4
+
