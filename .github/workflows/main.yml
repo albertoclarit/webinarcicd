@@ -15,6 +15,7 @@ jobs:
           DOCKER_USER: ${{secrets.DOCKER_USER}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run: |
+          cd phpsample
           docker build -t albertoclarit/phpdemo:1.0.3  .
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
           docker push albertoclarit/phpdemo
