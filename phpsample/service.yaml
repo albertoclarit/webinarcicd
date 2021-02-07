@@ -4,7 +4,7 @@ metadata:
   name: phpdemo-service
   namespace: phpdemo
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - name: http
       port: 80
