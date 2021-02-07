@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: phpdemo
-          image: albertoclarit/phpdemo:1.0.3
+          image: albertoclarit/phpdemo:1.0.4
           ports:
             - containerPort: 80
           readinessProbe:
