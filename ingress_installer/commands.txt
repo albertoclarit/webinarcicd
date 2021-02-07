@@ -1,0 +1,12 @@
+
+-- Using nginx  cause im familiar with this
+-- enabling  --enable-ssl-passthrough=true
+
+
+install namespace
+install services-account binding (not service.yaml)
+install cluster roles and binding
+install config maps
+install deployment and services
+
+chrome://net-internals/#hsts

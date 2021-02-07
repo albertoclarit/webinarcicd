@@ -33,7 +33,7 @@ docker start app
 
 ==== build ====
 
-docker build -t albertoclarit/phpdemo:1.0.0  .
+docker build -t albertoclarit/phpdemo:1.0.2 .
 
 docker run --name app -d -p 8080:80  albertoclarit/phpdemo:1.0.0
 

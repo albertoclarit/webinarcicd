@@ -6,7 +6,7 @@ metadata:
   labels:
     app: phpdemo
 spec:
-  replicas: 5
+  replicas: 10
   selector:
     matchLabels:
       app: phpdemo
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: phpdemo
-          image: albertoclarit/phpdemo:1.0.0
+          image: albertoclarit/phpdemo:1.0.2
           ports:
             - containerPort: 80
           readinessProbe:
