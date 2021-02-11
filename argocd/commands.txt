@@ -13,5 +13,7 @@ kubectl patch svc argocd-server -p '{"spec": {"type": "NodePort"}}'
 
 
 argocd login argocd.lvh.me
+argocd login argocd.172.104.38.71.nip.io
+
 
 argocd account update-password

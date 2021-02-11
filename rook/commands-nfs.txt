@@ -1,0 +1,41 @@
+Using NFS kay need ko ug raw Volume in Ceph
+see
+lsblk -f
+df -h
+
+
+
+
+https://rook.io/docs/rook/v1.5/nfs.html
+
+kubectl apply -f common.yaml
+kubectl apply -f operator.yaml
+
+kubectl -n rook-nfs-system get pod
+kubectl apply -f psp.yaml
+
+kubectl create -f rbac.yaml
+
+Run default storage class
+
+kubectl apply -f nfs.yaml
+
+== this is the real storage for the rook at this point its a hostpath... it can be PV from EBS or ETC.
+kubectl apply -f pv-hostpath.yaml
+
+ NFS Server needs real backing space for provision
+
+
+Verify
+kubectl -n rook-nfs get nfsservers.nfs.rook.io
+
+kubectl -n rook-nfs get pod -l app=rook-nfs
+
+
+--- use share1 export as Storage class rook-nfs-share1
+
+
+kubectl -n rook-nfs  get storageclass
+
+now use it to provision another PVC example ... jenkins
+

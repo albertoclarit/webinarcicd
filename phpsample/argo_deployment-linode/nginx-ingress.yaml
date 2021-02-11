@@ -1,0 +1,16 @@
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: phpdemo-ingress
+  namespace: phpdemo
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: phpdemo.lvh.me
+      http:
+        paths:
+          - backend:
+              serviceName: phpdemo-service
+              servicePort: 80
