@@ -13,11 +13,25 @@ Deploy the Rook Operator
 kubectl create -f crds.yaml -f common.yaml -f operator.yaml
 kubectl delete  -f crds.yaml -f common.yaml -f operator.yaml
 
-VErify
+Verify
 kubectl -n rook-ceph get pod
+
+Important - pls install  binary "lvm" does not exist on the host, make sure lvm2 package is installed:
+ binary "lvm" does not exist on the host lvm
+
+apt-get install lvm2
 
 Deploy cluster
 kubectl create -f cluster.yaml
 kubectl delete -f cluster.yaml
 
 
+kubectl -n rook-ceph get service
+
+kubectl apply -n rook-ceph  -f dashboard-ingress-https.yaml
+
+get the admin password
+kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
+
+
+ceph/rbd/storageclass-ec.yaml  erasure coding

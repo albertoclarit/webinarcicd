@@ -22,7 +22,7 @@ spec:
      - rook-ceph.example.com
      secretName: rook-ceph.example.com
   rules:
-  - host: rook-ceph.example.com
+  - host: rook-ceph.172.104.38.86.nip.io
     http:
       paths:
       - path: /
